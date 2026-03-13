@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AR Business Card</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <a-scene
+      mindar-image="imageTargetSrc: ./targets.mind; autoStart: true;"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-assets>
+        <!-- Profiilikuva (läpinäkyvä PNG) -->
+        <img id="card-photo" src="images/kuva_paula2.png" />
+
+        <!-- Taustakuvat -->
+        <img id="bg-turkoosi" src="images/bg_turkoosi.png" />
+        <img id="bg-keltainen" src="images/bg_keltainen.png" />
+        <img id="bg-punainen" src="images/bg_punainen.png" />
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- MindAR target -->
+      <a-entity mindar-image-target="targetIndex: 0" id="card-target">
+        <!-- Elementit luodaan main.js:ssä -->
+      </a-entity>
+    </a-scene>
+
+    <!-- Ladataan main.js versionumerolla, jotta selain ei käytä välimuistia -->
+    <script src="js/main.js?v=3"></script>
+  </body>
+</html>
